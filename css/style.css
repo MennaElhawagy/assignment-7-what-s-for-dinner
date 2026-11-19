@@ -1,0 +1,104 @@
+/* =========================================================
+   What's For Dinner — custom styles
+   (everything else comes from Tailwind classes in index.html)
+   ========================================================= */
+
+:root {
+  --color-scrollbar-thumb: oklch(75% 0.15 35 / 0.3);
+  --color-scrollbar-thumb-hover: oklch(75% 0.15 35 / 0.5);
+}
+
+#recipe-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ---------- Thin orange scrollbars ---------- */
+#recipe-display-section .overflow-y-auto {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-scrollbar-thumb) transparent;
+}
+
+#recipe-display-section .overflow-y-auto::-webkit-scrollbar {
+  width: 8px;
+}
+
+#recipe-display-section .overflow-y-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#recipe-display-section .overflow-y-auto::-webkit-scrollbar-thumb {
+  background-color: var(--color-scrollbar-thumb);
+  border-radius: 20px;
+}
+
+#recipe-display-section .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-scrollbar-thumb-hover);
+}
+
+.tab-content {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-scrollbar-thumb) transparent;
+}
+
+.tab-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tab-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tab-content::-webkit-scrollbar-thumb {
+  background-color: var(--color-scrollbar-thumb);
+  border-radius: 20px;
+}
+
+.tab-content::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-scrollbar-thumb-hover);
+}
+
+/* ---------- Print: show the whole recipe on paper ---------- */
+@media print {
+  #header,
+  .tab-button,
+  #try-another-btn,
+  button {
+    display: none !important;
+  }
+
+  .tab-content {
+    page-break-inside: avoid;
+    page-break-before: auto;
+    height: auto !important;
+    display: block !important;
+    overflow: visible !important;
+  }
+
+  #recipe-display-section {
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+  }
+
+  #recipe-display-section .grid {
+    height: auto !important;
+    display: block !important;
+  }
+
+  #recipe-image {
+    object-fit: cover;
+    page-break-after: avoid;
+    max-height: 300px;
+  }
+
+  body {
+    font-size: 12pt;
+  }
+
+  h3 {
+    font-size: 18pt;
+  }
+}
